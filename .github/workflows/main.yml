@@ -61,7 +61,8 @@ jobs:
       - name: Analyze with SonarCloud
         run: |
           mvn clean verify sonar:sonar -Dsonar.organization=abhishek-chourasiya -Dsonar.projectKey= SampleWebApplication
-          -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+          //-Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
         env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+          SONAR_TOKEN: 523da79b694e1abcd02088aac5a6bf6fdb45adea
+          GITHUB_TOKEN: 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
 

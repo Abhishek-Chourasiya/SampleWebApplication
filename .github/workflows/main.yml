@@ -1,0 +1,66 @@
+name: Java Web App CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Build with Maven
+        run: mvn -B package --file pom.xml
+
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Run tests
+        run: mvn test
+
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up JDK 11
+        uses: actions/setup-java@v2
+        with:
+          java-version: '11'
+
+      - name: Install SonarScanner
+        run: |
+          export SONAR_SCANNER_VERSION=4.6.0.2311
+          wget https://binaries.sonarsource.com/Distribution/sonar-scanner-cli/sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip
+          unzip sonar-scanner-cli-$SONAR_SCANNER_VERSION-linux.zip
+          export PATH="$PWD/sonar-scanner-$SONAR_SCANNER_VERSION-linux/bin:$PATH"
+
+      - name: Analyze with SonarCloud
+        run: |
+          mvn clean verify sonar:sonar -Dsonar.organization=<your-organization-key> -Dsonar.projectKey=<your-project-key> -Dsonar.host.url=https://sonarcloud.io -Dsonar.login=$SONAR_TOKEN
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+

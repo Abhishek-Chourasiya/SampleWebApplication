@@ -71,6 +71,13 @@
         
         <!-- Configuration for war plugin if needed -->
       </plugin>
+      
+      <!-- SonarCloud Maven Plugin -->
+      <plugin>
+        <groupId>org.sonarsource.scanner.maven</groupId>
+        <artifactId>sonar-maven-plugin</artifactId>
+        <version>3.9.0.2155</version> <!-- Or the latest version -->  
+      </plugin>
     </plugins>
   </build>
 </project>

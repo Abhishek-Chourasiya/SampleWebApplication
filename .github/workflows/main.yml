@@ -53,15 +53,15 @@ jobs:
           java-version: '17'
           distribution: 'temurin'
 
-      # - name: SonarCloud Scan
-      #   uses: sonarsource/sonarcloud-github-action@master
-      #   env:
-      #       SONAR_TOKEN: 523da79b694e1abcd02088aac5a6bf6fdb45adea
-      #       GITHUB_TOKEN: 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
+      - name: SonarCloud Scan
+        uses: sonarsource/sonarcloud-github-action@master
+        env:
+            SONAR_TOKEN: 523da79b694e1abcd02088aac5a6bf6fdb45adea
+            GITHUB_TOKEN: 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
         
-      #   with:
-      #     args: >
-      #         -Dsonar.organization=abhishek-chourasiya
-      #         -Dsonar.projectKey= SampleWebApplication   
+        with:
+          args: >
+              -Dsonar.organization=abhishek-chourasiya
+              -Dsonar.projectKey= SampleWebApplication   
 
 

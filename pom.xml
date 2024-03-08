@@ -16,20 +16,36 @@
   
   <url>http://maven.apache.org</url>
   
-  <properties>
-    <!-- SonarQube properties -->
-    <sonar.host.url>https://sonarcloud.io</sonar.host.url>
-    <sonar.organization>abhishek-chourasiya</sonar.organization>
-    <sonar.projectKey>SampleWebApplication</sonar.projectKey>
-    <!-- Add other SonarQube properties as needed -->
-  </properties>
-  
   <dependencies>
-    <!-- Dependencies -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.12</version>
+      <scope>test</scope>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-core</artifactId>
+      <version>3.2.3.RELEASE</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-web</artifactId>
+      <version>3.2.3.RELEASE</version>
+    </dependency>
+    
+    <dependency>
+      <groupId>org.springframework</groupId>
+      <artifactId>spring-webmvc</artifactId>
+      <version>3.2.3.RELEASE</version>
+    </dependency>
+    
     <dependency>
       <groupId>commons-codec</groupId>
       <artifactId>commons-codec</artifactId>
-      <version>1.11</version> <!-- or the latest version -->
+      <version>1.11</version>
     </dependency>
   </dependencies>
   
@@ -37,7 +53,6 @@
     <finalName>SampleWebApplication</finalName>
     
     <plugins>
-      <!-- Maven Compiler Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-compiler-plugin</artifactId>
@@ -49,20 +64,12 @@
         </configuration>
       </plugin>
       
-      <!-- Maven War Plugin -->
       <plugin>
         <groupId>org.apache.maven.plugins</groupId>
         <artifactId>maven-war-plugin</artifactId>
         <version>3.3.1</version>
         
         <!-- Configuration for war plugin if needed -->
-      </plugin>
-      
-      <!-- SonarCloud Maven Plugin -->
-      <plugin>
-        <groupId>org.sonarsource.scanner.maven</groupId>
-        <artifactId>sonar-maven-plugin</artifactId>
-        <version>3.9.0.2155</version> <!-- Or the latest version -->
       </plugin>
     </plugins>
   </build>
